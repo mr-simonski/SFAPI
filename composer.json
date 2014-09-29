@@ -8,7 +8,7 @@
             "email": "code@wbl-konzept.de"
         }
     ],
-    "minimum-stability": "beta",
+    "minimum-stability": "stable",
     "require": {
 
     }

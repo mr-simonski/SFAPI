@@ -1,11 +1,11 @@
 <?php
-    namespace semfox\Transport;
+    namespace SEMFOX\Transport;
 
     /**
-     * An exception for the semfox transport.
+     * An exception for the SEMFOX transport.
      * @author     blange <code@wbl-konzept.de>
      * @cateogry   vendor
-     * @package    semfox
+     * @package    SEMFOX
      * @subpackage Transport
      * @version    $id$
      */

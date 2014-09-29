@@ -1,14 +1,14 @@
 <?php
-    namespace semfox;
+    namespace SEMFOX;
 
-    use semfox\Transport\HTTP\File as SemfoxTransport,
-        semfox\Transport\TransportInterface;
+    use SEMFOX\Transport\HTTP\File as SemfoxTransport,
+        SEMFOX\Transport\TransportInterface;
 
     /**
-     * Request to semfox.
+     * Request to SEMFOX.
      * @author   blange <code@wbl-konzept.de>
      * @cateogry vendor
-     * @package  semfox
+     * @package  SEMFOX
      * @version  $id$
      */
     class Request {

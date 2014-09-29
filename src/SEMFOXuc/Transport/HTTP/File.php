@@ -1,14 +1,14 @@
 <?php
-    namespace semfox\Transport\HTTP;
+    namespace SEMFOX\Transport\HTTP;
 
-    use semfox\Transport\TransportAbstract,
-        semfox\Transport\Exception as TransportException;
+    use SEMFOX\Transport\TransportAbstract,
+        SEMFOX\Transport\Exception as TransportException;
 
     /**
      * Transport class for opening urls with the fopen-wrapper.
      * @author     blange <code@wbl-konzept.de>
      * @cateogry   vendor
-     * @package    semfox
+     * @package    SEMFOX
      * @subpackage Transport\HTTP
      * @version    $id$
      */

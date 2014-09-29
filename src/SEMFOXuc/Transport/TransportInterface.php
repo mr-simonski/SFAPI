@@ -1,11 +1,11 @@
 <?php
-    namespace semfox\Transport;
+    namespace SEMFOX\Transport;
 
     /**
      * The basic API for a transport class.
      * @author     blange <code@wbl-konzept.de>
      * @cateogry   vendor
-     * @package    semfox
+     * @package    SEMFOX
      * @subpackage Transport
      * @version    $id$
      */

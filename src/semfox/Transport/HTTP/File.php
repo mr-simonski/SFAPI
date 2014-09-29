@@ -4,6 +4,14 @@
     use semfox\Transport\TransportAbstract,
         semfox\Transport\Exception as TransportException;
 
+    /**
+     * Transport class for opening urls with the fopen-wrapper.
+     * @author     blange <code@wbl-konzept.de>
+     * @cateogry   vendor
+     * @package    semfox
+     * @subpackage Transport\HTTP
+     * @version    $id$
+     */
     class File extends TransportAbstract
     {
         protected function createRequestContext(array $aRequestArgs = array())

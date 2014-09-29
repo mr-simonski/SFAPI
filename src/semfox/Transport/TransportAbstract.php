@@ -1,6 +1,14 @@
 <?php
     namespace semfox\Transport;
 
+    /**
+     * Abstract fullfilling the basic API.
+     * @author     blange <code@wbl-konzept.de>
+     * @cateogry   vendor
+     * @package    semfox
+     * @subpackage Transport
+     * @version    $id$
+     */
     abstract class TransportAbstract implements TransportInterface
     {
         protected $aConfig = array();

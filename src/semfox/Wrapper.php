@@ -4,6 +4,13 @@
     use semfox\Transport\HTTP\File as HTTPFile,
         semfox\Transport\TransportInterface;
 
+    /**
+     * Basic wrapper for connecting to semfox.
+     * @author   blange <code@wbl-konzept.de>
+     * @cateogry vendor
+     * @package  semfox
+     * @version  $id$
+     */
     class Wrapper
     {
         protected $aConfig = array();

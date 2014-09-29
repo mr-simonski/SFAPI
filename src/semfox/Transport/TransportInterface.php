@@ -1,6 +1,14 @@
 <?php
     namespace semfox\Transport;
 
+    /**
+     * The basic API for a transport class.
+     * @author     blange <code@wbl-konzept.de>
+     * @cateogry   vendor
+     * @package    semfox
+     * @subpackage Transport
+     * @version    $id$
+     */
     interface TransportInterface
     {
         const TYPE_DELETE = 'DELETE';

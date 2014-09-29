@@ -4,6 +4,13 @@
     use semfox\Transport\HTTP\File as SemfoxTransport,
         semfox\Transport\TransportInterface;
 
+    /**
+     * Request to semfox.
+     * @author   blange <code@wbl-konzept.de>
+     * @cateogry vendor
+     * @package  semfox
+     * @version  $id$
+     */
     class Request {
         protected $oTransport = null;
 

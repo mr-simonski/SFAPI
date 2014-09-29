@@ -1,10 +1,11 @@
 {
 	"autoload"         : {
 		"psr-4": {
-			"semfox\\"          : "src/semfox/"
+			"semfox\\": "src/semfox/"
 		}
 	},
 	"name"             : "wblkonzept/sfapi",
+	"version"          : "0.0.1-dev",
 	"description"      : "API wrapper for semfox",
 	"license"          : "GPL v3",
 	"authors"          : [

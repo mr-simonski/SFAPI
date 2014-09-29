@@ -1,15 +1,18 @@
 {
-    "name": "wblkonzept/sfapi",
-    "description": "API wrapper for semfox",
-    "license": "GPL v3",
-    "authors": [
-        {
-            "name": "blange",
-            "email": "code@wbl-konzept.de"
-        }
-    ],
-    "minimum-stability": "stable",
-    "require": {
-
-    }
+	"autoload"         : {
+		"psr-4": {
+			"semfox\\"          : "src/semfox/"
+		}
+	},
+	"name"             : "wblkonzept/sfapi",
+	"description"      : "API wrapper for semfox",
+	"license"          : "GPL v3",
+	"authors"          : [
+		{
+			"name" : "blange",
+			"email": "code@wbl-konzept.de"
+		}
+	],
+	"minimum-stability": "stable",
+	"require"          : {}
 }

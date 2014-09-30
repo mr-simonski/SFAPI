@@ -91,7 +91,7 @@
 
             $sReturn = @file_get_contents(
                 'http://semfox.com:' . $this->getConfigValue('restPort', self::DEFAULT_PORT) . '/' . implode('/', $aPath) . '?' .
-                http_build_query($aArguments),
+                    http_build_query($aArguments),
                 false,
                 $rContext
             );

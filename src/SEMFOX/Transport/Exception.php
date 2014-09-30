@@ -1,4 +1,13 @@
 <?php
+    /**
+     * ./Transport/Exception.php
+     * @author     blange <code@wbl-konzept.de>
+     * @cateogry   vendor
+     * @package    SEMFOX
+     * @subpackage Transport
+     * @version    $id$
+     */
+
     namespace SEMFOX\Transport;
 
     /**

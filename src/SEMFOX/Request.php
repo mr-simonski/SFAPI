@@ -1,4 +1,12 @@
 <?php
+    /**
+     * ./Request.php
+     * @author   blange <code@wbl-konzept.de>
+     * @cateogry vendor
+     * @package  SEMFOX
+     * @version  $id$
+     */
+
     namespace SEMFOX;
 
     use SEMFOX\Transport\HTTP\File as SemfoxTransport,
@@ -12,19 +20,32 @@
      * @version  $id$
      */
     class Request {
+        /**
+         * The used transpor instance.
+         * @var TransportInterface|void
+         */
         protected $oTransport = null;
 
+        /**
+         * Process the request with the given transport instance and returns the json_decoded response.
+         * @param array $aArguments The request arguments.
+         * @return \stdClass|null
+         */
         public function __invoke(array $aArguments)
         {
             $oReturn = null;
 
-            if ($sTransported = $this->getTransport()->processRequest($aArguments)) {
-                $oReturn = json_decode($sTransported);
+            if ($sResponse = $this->getTransport()->processRequest($aArguments)) {
+                $oReturn = $this->parseRawResponse($sResponse);
             } // if
 
             return $oReturn;
         } // function
 
+        /**
+         * Returns the used transport instance.
+         * @return TransportInterface
+         */
         public function getTransport()
         {
             if (!$this->oTransport) {
@@ -34,6 +55,21 @@
             return $this->oTransport;
         } // function
 
+        /**
+         * Parses the given response of the transporter.
+         * @param string $sResponse
+         * @return \stdClass
+         */
+        protected function parseRawResponse($sResponse)
+        {
+            return json_decode($sResponse);
+        } // function
+
+        /**
+         * Sets the used transport instance.
+         * @param TransportInterface $oTransport
+         * @return \SEMFOX\Request
+         */
         public function setTransport(TransportInterface $oTransport)
         {
             $this->oTransport = $oTransport;

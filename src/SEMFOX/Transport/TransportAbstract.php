@@ -1,4 +1,13 @@
 <?php
+    /**
+     * ./Transport/TransportAbstract.php
+     * @author     blange <code@wbl-konzept.de>
+     * @cateogry   vendor
+     * @package    SEMFOX
+     * @subpackage Transport
+     * @version    $id$
+     */
+
     namespace SEMFOX\Transport;
 
     /**
@@ -11,13 +20,31 @@
      */
     abstract class TransportAbstract implements TransportInterface
     {
+        /**
+         * The used config.
+         * @var array
+         */
         protected $aConfig = array();
 
+        /**
+         * The used HTTP method/request type.
+         * @var string
+         */
+        protected $sType = '';
+
+        /**
+         * Construct.
+         * @param array $aConfig
+         */
         public function __construct(array $aConfig = array())
         {
             $this->aConfig = $aConfig;
         } // function
 
+        /**
+         * Returns the config array.
+         * @return array
+         */
         protected function getConfig()
         {
             return $this->aConfig;
@@ -34,11 +61,20 @@
             return @$this->aConfig[$sName] ?: $mDefault;
         } // function
 
+        /**
+         * Returns the request type/HTTP method.
+         * @return string
+         */
         public function getType()
         {
             return $this->sType;
         } // function
 
+        /**
+         * Sets the request type/HTTP method.
+         * @param $sType
+         * @return \SEMFOX\Transport\TransportAbstract
+         */
         public function setType($sType)
         {
             $this->sType = $sType;

@@ -5,7 +5,7 @@
 		}
 	},
 	"name"             : "wblkonzept/sfapi",
-	"version"          : "0.0.5-dev",
+	"version"          : "0.0.6-dev",
 	"description"      : "API wrapper for SEMFOX",
 	"license"          : "GPL v3",
 	"authors"          : [

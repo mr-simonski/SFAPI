@@ -62,6 +62,12 @@
          */
         protected function parseRawResponse($sResponse)
         {
+            /**
+             * http://de2.php.net/manual/en/function.json-decode.php:
+             *
+             * PHP implements a superset of JSON - it will also encode and decode scalar types and NULL. The JSON standard
+             * only supports these values when they are nested inside an array or an object.
+             */
             return json_decode($sResponse);
         } // function
 

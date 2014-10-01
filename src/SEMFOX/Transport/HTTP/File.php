@@ -40,6 +40,7 @@
          * @param array $aRequestArgs
          * @return array The first value is the context resource and the second value are the remaining request arguments.
          * @throws TransportException If there is an error.
+         * @todo   SSL (and Validation!)
          */
         protected function createRequestContext(array $aRequestArgs = array())
         {
@@ -61,13 +62,11 @@
                 $aOptions['http']['content'] = $sRequestContent;
             } // if
 
-            // TODO: SSL Validation, Timeout.
-
             $aNeededValues = array('apiKey', 'customerId');
 
             foreach ($aNeededValues as $sName) {
                 if (!$mValue = $this->getConfigValue($sName, '')) {
-                    throw new TransportException('Missing config value: ' . $sName);
+                    throw new TransportException('Missing config value: ' . $sName, 503);
                 } // if
 
                 $aRequestArgs[$sName] = $mValue;
@@ -97,7 +96,7 @@
             );
 
             if ($mReturn === false) {
-                throw new TransportException('Last Request did not return output.');
+                throw new TransportException('Last Request did not return output.', 404);
             } // if
 
             return $mReturn;

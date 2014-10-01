@@ -89,17 +89,17 @@
 
             list($rContext, $aArguments) = $this->createRequestContext($aArguments);
 
-            $sReturn = @file_get_contents(
+            $mReturn = @file_get_contents(
                 'http://semfox.com:' . $this->getConfigValue('restPort', self::DEFAULT_PORT) . '/' . implode('/', $aPath) . '?' .
                     http_build_query($aArguments),
                 false,
                 $rContext
             );
 
-            if (!$sReturn) {
+            if ($mReturn === false) {
                 throw new TransportException('Last Request did not return output.');
             } // if
 
-            return $sReturn;
+            return $mReturn;
         } // function
     } // class

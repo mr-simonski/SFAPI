@@ -20,5 +20,30 @@
      */
     class Exception extends \Exception
     {
+        /**
+         * A possible request context for the exception.
+         * @var mixed
+         */
+        protected $mRequestContext = null;
 
-    }
+        /**
+         * Returns the possible request context.
+         * @return mixed
+         */
+        public function getRequestContext()
+        {
+            return $this->mRequestContext;
+        } // function
+
+        /**
+         * Sets the context for the request.
+         * @param mixed $mContext
+         * @return Exception
+         */
+        public function setRequestContext($mContext)
+        {
+            $this->mRequestContext = $mContext;
+
+            return $this;
+        } // function
+    } // class

@@ -39,6 +39,7 @@
          * Creates the fopen request for the next request.
          * @param array $aRequestArgs
          * @return array The first value is the context resource and the second value are the remaining request arguments.
+         *               (The third value is the raw context).
          * @throws TransportException If there is an error.
          * @todo   SSL (and Validation!)
          */
@@ -72,7 +73,7 @@
                 $aRequestArgs[$sName] = $mValue;
             } // foreach
 
-            return array(stream_context_create($aOptions), $aRequestArgs);
+            return array(stream_context_create($aOptions), $aRequestArgs, $aOptions);
         } // function
 
         /**
@@ -86,10 +87,10 @@
             $aPath = $aArguments['path'];
             unset($aArguments['path']);
 
-            list($rContext, $aArguments) = $this->createRequestContext($aArguments);
+            list($rContext, $aArguments, $aContextOptions) = $this->createRequestContext($aArguments);
 
             $mReturn = @file_get_contents(
-                'http://semfox.com:' . $this->getConfigValue('restPort', self::DEFAULT_PORT) . '/' . implode('/', $aPath) . '?' .
+                $sURL = 'http://semfox.com:' . $this->getConfigValue('restPort', self::DEFAULT_PORT) . '/' . implode('/', $aPath) . '?' .
                     http_build_query($aArguments),
                 false,
                 $rContext
@@ -97,7 +98,13 @@
 
             // TODO check $http_response_header
             if ($mReturn === false) {
-                throw new TransportException('Last Request did not return output.', 404);
+                $oExc = new TransportException('Last Request did not return output.', 404);
+
+                throw $oExc->setRequestContext(array(
+                    'aRequestOptions'  => $aContextOptions,
+                    'aResponseHeaders' => $http_response_header,
+                    'sRequestURL'      => $sURL
+                ));
             } // if
 
             return $mReturn;

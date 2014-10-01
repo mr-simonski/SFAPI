@@ -96,7 +96,6 @@
                 $rContext
             );
 
-            // TODO check $http_response_header
             if ($mReturn === false) {
                 $oExc = new TransportException('Last Request did not return output.', 404);
 

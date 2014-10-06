@@ -84,13 +84,11 @@
          */
         protected function parseRequestData(array $aData)
         {
-            $sReturn = '';
-
-            foreach ($aData as $sParentKey => $mChildData) {
-                $sReturn .= "&{$sParentKey}=" . urlencode(json_encode($mChildData));
+            foreach ($aData as $sParentKey => &$mChildData) {
+                $mChildData = json_encode($mChildData);
             } // foreach
 
-            return ltrim($sReturn, '&');
+            return http_build_query($aData);
         } // function
 
         /**

@@ -58,7 +58,7 @@
                 $aRequestArgs    = array();
 
                 $aOptions['http']['header'] =
-                    "Content-Type: application/x-www-form-urlencode\r\n" .
+                    "Content-Type: application/x-www-form-urlencoded\r\n" .
                     'Content-Length: ' . strlen($sRequestContent) . "\r\n";
 
                 $aOptions['http']['content'] = $sRequestContent;
@@ -87,7 +87,7 @@
             $sReturn = '';
 
             foreach ($aData as $sParentKey => $mChildData) {
-                $sReturn .= "&{$sParentKey}=" . json_encode($mChildData);
+                $sReturn .= "&{$sParentKey}=" . urlencode(json_encode($mChildData));
             } // foreach
 
             return ltrim($sReturn, '&');

@@ -47,17 +47,18 @@
         {
             $aOptions = array(
                 'http' => array(
+                    'header'  => "Content-Type: application/json\r\n",
                     'method'  => $sMethod = $this->getType(),
                     'timeout' => (int) $this->getConfigValue('requestTimeout', self::DEFAULT_TIMEOUT)
                 )
             );
 
             if ($sMethod === self::TYPE_POST || $sMethod === self::TYPE_PUT) {
-                $sRequestContent = json_encode($aRequestArgs);
+                $sRequestContent = $this->parseRequestData($aRequestArgs);
                 $aRequestArgs    = array();
 
                 $aOptions['http']['header'] =
-                    "Content-type: application/json\r\n" .
+                    "Content-Type: application/x-www-form-urlencode\r\n" .
                     'Content-Length: ' . strlen($sRequestContent) . "\r\n";
 
                 $aOptions['http']['content'] = $sRequestContent;
@@ -74,6 +75,22 @@
             } // foreach
 
             return array(stream_context_create($aOptions), $aRequestArgs, $aOptions);
+        } // function
+
+        /**
+         * Returns the data as urlencoded json strings.
+         * @param array $aData
+         * @return string
+         */
+        protected function parseRequestData(array $aData)
+        {
+            $sReturn = '';
+
+            foreach ($aData as $sParentKey => $mChildData) {
+                $sReturn .= "&{$sParentKey}=" . json_encode($mChildData);
+            } // foreach
+
+            return ltrim($sReturn, '&');
         } // function
 
         /**

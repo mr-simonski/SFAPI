@@ -10,7 +10,8 @@
 
     namespace SEMFOX\Transport\HTTP;
 
-    use SEMFOX\Transport\TransportAbstract,
+    use SEMFOX\Response,
+        SEMFOX\Transport\TransportAbstract,
         SEMFOX\Transport\Exception as TransportException;
 
     /**
@@ -123,6 +124,6 @@
                 ));
             } // if
 
-            return $mReturn;
+            return new Response($mReturn);
         } // function
     } // class

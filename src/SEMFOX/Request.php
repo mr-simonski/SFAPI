@@ -19,7 +19,14 @@
      * @package  SEMFOX
      * @version  $id$
      */
-    class Request {
+    class Request
+    {
+        /**
+         * The arguments for the request.
+         * @var array
+         */
+        protected $aRequestArguments = array();
+
         /**
          * The used transpor instance.
          * @var TransportInterface|void
@@ -33,13 +40,18 @@
          */
         public function __invoke(array $aArguments)
         {
-            $oReturn = null;
+            $oResponse = $this->getTransport()->processRequest($aArguments);
 
-            if ($sResponse = $this->getTransport()->processRequest($aArguments)) {
-                $oReturn = $this->parseRawResponse($sResponse);
-            } // if
+            return $oResponse->setRequest($this);
+        } // function
 
-            return $oReturn;
+        /**
+         * Returns the request arguments.
+         * @return array
+         */
+        public function getRequestArguments()
+        {
+            return $this->aRequestArguments;
         } // function
 
         /**
@@ -56,19 +68,15 @@
         } // function
 
         /**
-         * Parses the given response of the transporter.
-         * @param string $sResponse
-         * @return \stdClass
+         * Sets the request arguments.
+         * @param array $aArgs
+         * @return Request
          */
-        protected function parseRawResponse($sResponse)
+        protected function setRequestArguments(array $aArgs)
         {
-            /**
-             * http://de2.php.net/manual/en/function.json-decode.php:
-             *
-             * PHP implements a superset of JSON - it will also encode and decode scalar types and NULL. The JSON standard
-             * only supports these values when they are nested inside an array or an object.
-             */
-            return json_decode($sResponse);
+            return $this->aRequestArguments = $aArgs;
+
+            return $this;
         } // function
 
         /**

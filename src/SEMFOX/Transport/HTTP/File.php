@@ -104,7 +104,7 @@
 
             list($rContext, $aArguments, $aContextOptions) = $this->createRequestContext($aArguments);
 
-            $iStartTime = microtime();
+            $iStartTime = microtime(true);
             $mReturn    = @file_get_contents(
                 $sURL = 'http://semfox.com:' . $this->getConfigValue('restPort', self::DEFAULT_PORT) . '/' . implode('/', $aPath) . '?' .
                     http_build_query($aArguments),
@@ -118,7 +118,7 @@
                 throw $oExc->setRequestContext(array(
                     'aRequestOptions'  => $aContextOptions,
                     'aResponseHeaders' => $http_response_header,
-                    'iRequestTime'     => microtime() - $iStartTime,
+                    'iRequestTime'     => microtime(true) - $iStartTime,
                     'sRequestURL'      => $sURL
                 ));
             } // if

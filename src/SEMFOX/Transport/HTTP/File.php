@@ -25,16 +25,10 @@
     class File extends TransportAbstract
     {
         /**
-         * The default port.
-         * @var string
-         */
-        const DEFAULT_PORT = '8585';
-
-        /**
          * The default timeout for the connection.
          * @var string
          */
-        const DEFAULT_TIMEOUT = 15;
+        const DEFAULT_TIMEOUT = 25;
 
         /**
          * Creates the fopen request for the next request.
@@ -107,7 +101,7 @@
 
             $iStartTime = microtime(true);
             $mReturn    = @file_get_contents(
-                $sURL = 'http://semfox.com:' . $this->getConfigValue('restPort', self::DEFAULT_PORT) . '/' . implode('/', $aPath) . '?' .
+                $sURL = 'http://api.semfox.com/' . implode('/', $aPath) . '?' .
                     http_build_query($aArguments),
                 false,
                 $rContext

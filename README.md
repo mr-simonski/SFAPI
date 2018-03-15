@@ -1,4 +1,4 @@
-SEMFOXAPI
+SEMKNOX API
 =========
 
-PHP API Wrapper for SEMFOX.
+PHP API Wrapper for SEMKNOX.
